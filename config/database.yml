@@ -8,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: アプリ名_development
+  database: kauzo_development
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
   username: root
   password:
   host: localhost
-  database: アプリ名_test
+  database: kauzo_test
 
 production:
   <<: *default

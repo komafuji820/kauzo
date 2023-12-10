@@ -1,6 +1,6 @@
 default: &default
   encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } % >
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -8,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: kauzo_development
+  database: kauzo_rails7_development
 
 test:
   <<: *default
@@ -21,4 +21,4 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] % >
+  url: <%= ENV['DATABASE_URL'] %>

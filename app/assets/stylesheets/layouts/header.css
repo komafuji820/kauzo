@@ -1,0 +1,45 @@
+/* ヘッダー全体 */
+.header{
+  height: 70px;
+  width: 100vw;
+  background-color: pink;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* タイトル部分 */
+.header__title-section{
+  line-height: 70px;
+  font-size: 45px;
+}
+
+.title{
+  color: darkslateblue;
+  text-decoration: none;
+  font-family: 'BIZ UDPGothic', sans-serif;
+  text-shadow: 1px 1px 1px white;
+}
+
+/* ユーザー名＆ログアウト・ログイン＆新規登録 */
+.header__nav-section{
+  line-height: 70px;
+  font-size: 28px;
+  font-family: 'BIZ UDPGothic', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-login{
+  margin:0 30px;
+  text-decoration: none;
+  color: darkslateblue;
+  text-shadow: 1px 1px 1px white;
+}
+
+.user-logout{
+  margin:0 30px;
+  text-decoration: none;
+  color: darkslateblue;
+  text-shadow: 1px 1px 1px white;
+}

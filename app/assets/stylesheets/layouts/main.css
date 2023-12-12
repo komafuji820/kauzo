@@ -1,0 +1,6 @@
+/* メイン部分 */
+.main{
+  height: calc(100vh - 70px - 30px);
+  background-color: white;
+}
+

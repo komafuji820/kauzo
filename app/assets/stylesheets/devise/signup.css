@@ -1,0 +1,45 @@
+.sign-up-wrapper{
+  height: calc(100vh - 70px - 30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-title{
+  font-size: 35px;
+  font-family: 'M PLUS 1 Code', monospace;
+  text-align: center;
+}
+
+.new_user{
+  background-color: rgb(249, 223, 238);
+  border-radius: 15px;
+  font-family: 'M PLUS 1 Code', monospace;
+  font-size: 20px;
+  padding: 25px 20px;
+}
+
+.field{
+  padding: 10px 10px;
+}
+
+.sign-up-form{
+  height: 35px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.sign-up-btn{
+  height: 40px;
+  width: 40%;
+  font-family: 'M PLUS 1 Code', monospace;
+  font-size: 17px;
+  background-color: skyblue;
+  border-radius: 5px;
+}

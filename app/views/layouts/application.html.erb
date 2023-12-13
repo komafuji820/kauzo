@@ -5,12 +5,39 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Prata&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="header__title-section">
+        <%= link_to 'Kauzo', root_path, class:"title" %>
+      </div>
+      <div class="header__nav-section">
+        <% if user_signed_in? %>
+          <div class="user-login">
+            <%= current_user.nickname %>
+          </div>
+          <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class:"user-logout" %>
+        <% else %>
+          <%= link_to 'ログイン', new_user_session_path, class:"user-login" %>
+          <%= link_to '新規登録', new_user_registration_path, class:"user-logout" %>
+        <% end %>
+      </div>
+    </header>
+
+    <div class="main">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="footer">
+        ＠copyrights kauzo 2023
+      </div>
+    </footer>
   </body>
 </html>

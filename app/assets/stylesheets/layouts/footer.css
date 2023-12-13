@@ -1,0 +1,8 @@
+/* フッター部分 */
+.footer{
+  height: 30px;
+  width: 100vw;
+  background-color: pink;
+  text-align: center;
+  line-height: 30px;
+}

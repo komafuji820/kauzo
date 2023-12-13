@@ -4,35 +4,35 @@
       新規登録
     </div>
 
-      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label 'ニックネーム' %><br />
-        <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class:"sign-up-form"%>
-      </div>
+    <div class="field">
+      <%= f.label 'ニックネーム（10文字以内）' %><br />
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", maxlength: 10, class:"sign-up-form"%>
+    </div>
 
-      <div class="field">
-        <%= f.label 'メールアドレス' %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"sign-up-form" %>
-      </div>
+    <div class="field">
+      <%= f.label 'メールアドレス' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"sign-up-form" %>
+    </div>
 
-      <div class="field">
-        <%= f.label 'パスワード' %>
-        <% if @minimum_password_length %>
-          (<%= "英数字#{@minimum_password_length}文字以上" %>)
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class:"sign-up-form" %>
-      </div>
+    <div class="field">
+      <%= f.label 'パスワード' %>
+      <% if @minimum_password_length %>
+        (<%= "半角英数をどちらも含む#{@minimum_password_length}文字以上" %>)
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class:"sign-up-form" %>
+    </div>
 
-      <div class="field">
-        <%= f.label 'パスワード（確認）' %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"sign-up-form" %>
-      </div>
+    <div class="field">
+      <%= f.label 'パスワード確認用' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"sign-up-form" %>
+    </div>
 
-      <div class="actions">
-        <%= f.submit "登録する", class:"sign-up-btn" %>
-      </div>
-      <% end %>
+    <div class="actions">
+      <%= f.submit "登録する", class:"sign-up-btn" %>
+    </div>
+    <% end %>
   </div>
 </div>

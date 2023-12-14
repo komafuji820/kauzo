@@ -36,3 +36,28 @@
   color: darkslateblue;
   text-shadow: 1px 1px 1px white;
 }
+
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  .header{
+    height: 32px;
+    padding: 0 32px;
+  }
+  
+  /* タイトル部分 */
+  .header__title-section{
+    line-height: 32px;
+    font-size: 20px;
+  }
+    
+  /* ユーザー名＆ログアウト・ログイン＆新規登録 */
+  .header__nav-section{
+    line-height: 32px;
+    font-size: 14px;
+  }
+  
+  .user-login, .user-logout{
+    margin:0 12px;
+  }
+
+}

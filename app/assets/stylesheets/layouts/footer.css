@@ -5,3 +5,10 @@
   text-align: center;
   line-height: 18px;
 }
+
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  .footer{
+    line-height: 14px;
+  }
+}

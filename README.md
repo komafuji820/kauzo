@@ -10,8 +10,8 @@
 
 ### Association
 
-- has_many :user_groups
-- has_many :groups, through: :user_groups
+- has_many :group_users
+- has_many :groups, through: :group_users
 - has_many :item_memos
 - has_many :order_memos
 
@@ -23,22 +23,22 @@
 
 ### Association
 
-- has_many :user_groups
-- has_many :users, through: :user_groups
+- has_many :group_users
+- has_many :users, through: :group_users
 - has_many :items
 - has_many :orders
 
-## user-groups テーブル
+## group_users テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
 | group  | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :group
+- belongs_to :user
 
 ## items テーブル
 

@@ -1,13 +1,20 @@
+<div>
+  グループに入れたいユーザーを検索
+</div>
 <%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+  <%= form.text_field :keyword, placeholder: "ユーザー名またはメールアドレス", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
 
 <% if @users.present? %>
   <% @users.each do |user| %>
-    <%= user.nickname %>
-    <%= user.email %>
+    <% if user.id != current_user.id %>
+      <%= check_box_tag :user_select %>
+      <%= label_tag :user_select, user.email %> <%= user.nickname %>
+    <% end %>
   <% end %>
 <% else %>
   該当するユーザーがいません
 <% end %>
+
+<%= link_to '次へ', new_group_path %>

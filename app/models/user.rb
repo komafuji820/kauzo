@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   
   def self.search(search)
-    User.where('nickname LIKE(?)', "%#{search}%")
+    User.where('nickname LIKE(?)', "%#{search}%").or User.where('email LIKE(?)', "%#{search}%")
   end
 
 end

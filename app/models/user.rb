@@ -12,4 +12,9 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, on: create
 
+  
+  def self.search(search)
+    User.where('nickname LIKE(?)', "%#{search}%")
+  end
+
 end

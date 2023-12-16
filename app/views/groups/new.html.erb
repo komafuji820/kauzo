@@ -1,0 +1,4 @@
+  <%= form_with model: @group, local: true do |form| %>
+    <%= form.text_field :name, placeholder: "グループ名" %>
+    <%= form.submit "グループを作成する" %>
+  <% end %>

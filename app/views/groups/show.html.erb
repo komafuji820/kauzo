@@ -2,6 +2,9 @@
 <div>
   グループ名：<%= @group.name %>
   参加メンバー：
+  <% @users.each do |user| %>
+    <%= user.nickname %>
+  <% end %>
   お買い物リスト：
   在庫リスト：
 </div>

@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 
   
   def index
-    @groups = Group.all
+    
   end
 
   def new
@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @users = User.all
   end
 
   def update

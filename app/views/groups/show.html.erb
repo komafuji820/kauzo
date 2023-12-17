@@ -3,7 +3,7 @@
   <%= link_to 'グループ名', edit_group_path(@group.id) %> <%= @group.name %>
 </div>
 <div>
-  参加メンバー：
+  <%= link_to '参加メンバー', edit_group_path(@group.id) %>
   <% @users.each do |user| %>
     <%= user.nickname %>
   <% end %>

@@ -1,14 +1,24 @@
 グループ詳細画面
 <div>
-  グループ名：<%= @group.name %>
+  <%= link_to 'グループ名', edit_group_path(@group.id) %> <%= @group.name %>
+</div>
+<div>
   参加メンバー：
   <% @users.each do |user| %>
     <%= user.nickname %>
   <% end %>
-  お買い物リスト：
-  在庫リスト：
+</div>
+<div>
+  作成済みのお買い物リスト：
+<div>
+<div>
+  <%= @group.name %>の在庫リスト：
 </div>
 
 <div>
-  <%= link_to 'グループを編集する', edit_group_path(@group.id) %>
+  <%= link_to '新しいお買い物リストを作成' %>
+</div>
+
+<div>
+  <%= link_to '在庫リストを作成する' %>
 </div>

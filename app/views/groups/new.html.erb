@@ -1,4 +1,19 @@
-  <%= form_with model: @group, local: true do |form| %>
-    <%= form.text_field :name, placeholder: "グループ名" %>
-    <%= form.submit "グループを作成する" %>
-  <% end %>
+<div class="new-group-wrapper">
+  <div class="new-group-section">
+    <div class="new-group-title">
+      グループ作成
+    </div>
+
+    <%= form_with model: @group, local: true do |f| %>
+ 
+    <div class="field">
+      <%= f.label 'グループ名' %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"new-group-form" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "作成", class:"new-group-btn" %>
+    </div>
+    <% end %>
+  </div>
+</div>

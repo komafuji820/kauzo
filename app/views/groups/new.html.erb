@@ -13,6 +13,8 @@
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"new-group-form" %>
     </div>
       <input name="group[user_ids][]" value=<%= current_user.id %>>
+      <input name="group[user_ids][]" value=<%= params[:group][:user_ids] %>>
+
 
     <div class="actions">
       <%= f.submit "作成", class:"new-group-btn" %>

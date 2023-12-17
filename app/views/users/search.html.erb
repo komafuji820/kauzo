@@ -1,20 +1,30 @@
 <div>
   グループに入れたいユーザーを検索
 </div>
-<%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "ユーザー名またはメールアドレス", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
+
+<%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |f| %>
+  <%= f.text_field :keyword, autofocus: true, placeholder: "ユーザー名またはメールアドレス", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
 <% end %>
 
-<% if @users.present? %>
-  <% @users.each do |user| %>
-    <% if user.id != current_user.id %>
-      <%= check_box_tag :user_select %>
-      <%= label_tag :user_select, user.email %> <%= user.nickname %>
+<%= form_with model: @group, url: groups_path, local: true do |f| %>
+  <div class="field">
+    <%= f.label 'グループ名' %><br />
+    <%= f.text_field :name, autocomplete: "name", class:"new-group-form" %>
+  </div>
+    <input name="group[user_ids][]" value=<%= current_user.id %>>
+  <% if @users.present? %>
+    <% @users.each do |user| %>
+      <% if user.id != current_user.id %>
+        <%= check_box_tag "group[user_ids][]", user.id %>
+        <%= label_tag "group[user_ids][]", user.nickname %>
+        <%= label_tag "group[user_ids][]", user.email %>
+      <% end %>
     <% end %>
+  <% else %>
+    該当するユーザーがいません
   <% end %>
-<% else %>
-  該当するユーザーがいません
+  <div class="actions">
+  <%= f.submit "更新", class:"new-group-btn" %>
+  </div>
 <% end %>
-
-<%= link_to '次へ', new_group_path %>

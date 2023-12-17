@@ -1,7 +1,9 @@
 <%= flash[:group_create] %>
 
-<% @groups.each do |group| %>
+<% current_user.groups.each do |group| %>
   <div>
-  <%= link_to group.name, group_path(group.id) %>
+    <%= link_to group.name, group_path(group.id) %>
   </div>
 <% end %>
+
+<%= link_to '検索', search_users_path %>

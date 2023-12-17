@@ -1,0 +1,19 @@
+<div class="new-group-wrapper">
+  <div class="new-group-section">
+    <div class="new-group-title">
+      グループ編集
+    </div>
+
+    <%= form_with model: @group, local: true do |f| %>
+ 
+    <div class="field">
+      <%= f.label 'グループ名' %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"new-group-form" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "更新", class:"new-group-btn" %>
+    </div>
+    <% end %>
+  </div>
+</div>

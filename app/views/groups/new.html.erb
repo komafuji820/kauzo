@@ -1,27 +1,3 @@
 <%= flash[:group_name_error] %>
 
 <%= render partial: 'users/search_user' %>
-
-<%= form_with model: @group, url: groups_path, local: true do |f| %>
-
-  <div class="field">
-    <%= f.label 'グループ名を入力' %><br />
-    <%= f.text_field :name, autocomplete: "name", class:"new-group-form" %>
-    <input name="group[user_ids][]" value=<%= current_user.id %> type="hidden">
-  </div>
-
-  <% if @users.present? %>
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-        <%= check_box_tag "group[user_ids][]", user.id %>
-        <%= label_tag "group[user_ids][]", user.nickname %>
-        <%= label_tag "group[user_ids][]", user.email %>
-      <% end %>
-    <% end %>
-  <% end %>
-
-  <div class="actions">
-  <%= f.submit "グループを作成", class:"new-group-btn" %>
-  </div>
-
-<% end %>

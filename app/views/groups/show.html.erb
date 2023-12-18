@@ -22,3 +22,7 @@
 <div>
   <%= link_to '在庫リストを作成する' %>
 </div>
+
+<div>
+  <%= link_to 'グループを削除する', group_path(@group.id), data: { turbo_method: :delete } %>
+</div>

@@ -34,6 +34,14 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     group.update(group_params)
     redirect_to root_path
+    flash[:group_create] = "#{group.name}グループを作成しました"
+  end
+
+  def destroy
+    group = Group.find(params[:id])
+    group.destroy
+    redirect_to root_path
+    flash[:group_delete] = "#{group.name}グループを削除しました"
   end
 
   private

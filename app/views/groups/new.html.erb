@@ -1,24 +1,27 @@
 <%= flash[:group_name_error] %>
 
-<div class="new-group-wrapper">
-  <div class="new-group-section">
-    <div class="new-group-title">
-      グループ作成
-    </div>
+<%= render partial: 'users/search_user' %>
 
-    <%= form_with model: @group, local: true do |f| %>
- 
-    <div class="field">
-      <%= f.label 'グループ名' %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"new-group-form" %>
-    </div>
-      <input name="group[user_ids][]" value=<%= current_user.id %>>
-      <input name="group[user_ids][]" value=<%= params[:group][:user_ids] %>>
+<%= form_with model: @group, url: groups_path, local: true do |f| %>
 
-
-    <div class="actions">
-      <%= f.submit "作成", class:"new-group-btn" %>
-    </div>
-    <% end %>
+  <div class="field">
+    <%= f.label 'グループ名を入力' %><br />
+    <%= f.text_field :name, autocomplete: "name", class:"new-group-form" %>
+    <input name="group[user_ids][]" value=<%= current_user.id %> type="hidden">
   </div>
-</div>
+
+  <% if @users.present? %>
+    <% @users.each do |user| %>
+      <% if user.id != current_user.id %>
+        <%= check_box_tag "group[user_ids][]", user.id %>
+        <%= label_tag "group[user_ids][]", user.nickname %>
+        <%= label_tag "group[user_ids][]", user.email %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+  <%= f.submit "グループを作成", class:"new-group-btn" %>
+  </div>
+
+<% end %>

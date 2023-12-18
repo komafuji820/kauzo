@@ -1,0 +1,7 @@
+<div>
+  グループに入れたいユーザーを検索できます。
+</div>
+<%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |f| %>
+  <%= f.text_field :keyword, autofocus: true, placeholder: "ニックネームまたはメールアドレスを入力してください", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>

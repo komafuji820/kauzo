@@ -1,18 +1,15 @@
-<div>
-  グループに入れたいユーザーを検索
-</div>
+<%= flash[:group_name_error] %>
 
-<%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |f| %>
-  <%= f.text_field :keyword, autofocus: true, placeholder: "ユーザー名またはメールアドレス", class: "search-input" %>
-  <%= f.submit "検索", class: "search-btn" %>
-<% end %>
+<%= render partial: 'search_user' %>
 
 <%= form_with model: @group, url: groups_path, local: true do |f| %>
+
   <div class="field">
-    <%= f.label 'グループ名' %><br />
+    <%= f.label 'グループ名を入力' %><br />
     <%= f.text_field :name, autocomplete: "name", class:"new-group-form" %>
-  </div>
     <input name="group[user_ids][]" value=<%= current_user.id %>>
+  </div>
+
   <% if @users.present? %>
     <% @users.each do |user| %>
       <% if user.id != current_user.id %>
@@ -22,9 +19,11 @@
       <% end %>
     <% end %>
   <% else %>
-    該当するユーザーがいません
+    該当するユーザーはいませんでした
   <% end %>
+
   <div class="actions">
-  <%= f.submit "更新", class:"new-group-btn" %>
+  <%= f.submit "グループを作成", class:"new-group-btn" %>
   </div>
+
 <% end %>

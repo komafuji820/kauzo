@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash[:group_create] = "グループ#{@group.name}を作成しました。"
+      flash[:group_create] = "#{@group.name}グループを作成しました。"
       redirect_to root_path
     else
       flash.now[:group_name_error] = "グループ名を入力してください。"

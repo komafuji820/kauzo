@@ -20,7 +20,6 @@
       <div class="header__nav-section">
         <% if user_signed_in? %>
           <div class="user-login">
-            <%= link_to 'グループを作成する', search_users_path %>
             <%= current_user.nickname %>
           </div>
           <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class:"user-logout" %>

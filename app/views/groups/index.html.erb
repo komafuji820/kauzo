@@ -1,10 +1,21 @@
 <%= flash[:group_create] %>
+<%= flash[:group_update] %>
 <%= flash[:group_delete] %>
+
+<div>
+  グループに追加したいユーザーを検索してください。ニックネームまたはメールアドレスで検索することができます。
+</div>
+<div>
+<%= "検索結果に #{current_user.nickname}さん の名前は表示されません！" %>
+</div>
+
+<%= form_with url: search_users_path, local: true, method: :get, class: "search-form" do |f| %>
+  <%= f.text_field :keyword, autofocus: true, placeholder: "ユーザーを検索", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>
 
 <% current_user.groups.each do |group| %>
   <div>
     <%= link_to group.name, group_path(group.id) %>
   </div>
 <% end %>
-
-<%= link_to '検索', search_users_path %>

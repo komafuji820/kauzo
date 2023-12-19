@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @users = User.where.not(id: current_user.id).search(params[:keyword])
     @group = Group.new
   end
 
@@ -27,14 +28,14 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @users = User.all
+    @users = @group.users
   end
 
   def update
     group = Group.find(params[:id])
     group.update(group_params)
     redirect_to root_path
-    flash[:group_create] = "#{group.name}グループを作成しました"
+    flash[:group_update] = "#{group.name}グループ情報を更新しました"
   end
 
   def destroy

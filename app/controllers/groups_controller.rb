@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash[:group_create] = "グループ名：#{@group.name}を作成しました！"
+      flash[:group_create] = "#{@group.name}を作成しました！"
       session["add_member_data"] = nil
       redirect_to root_path
     else
@@ -55,7 +55,7 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     group.destroy
     redirect_to root_path
-    flash[:group_delete] = "#{group.name}グループを削除しました"
+    flash[:group_delete] = "#{group.name}を削除しました"
   end
 
   private

@@ -1,0 +1,8 @@
+<div>
+  グループに追加したいユーザーを検索してください。ニックネームまたはメールアドレスで検索できます。
+</div>
+
+<%= form_with url: search_result_users_path, local: true, method: :get, class: "search-form" do |f| %>
+  <%= f.text_field :keyword, autofocus: true, placeholder: "ユーザーを検索", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>

@@ -1,0 +1,9 @@
+<%= flash[:group_create] %>
+<%= flash[:group_update] %>
+<%= flash[:group_delete] %>
+
+<% current_user.groups.each do |group| %>
+  <div>
+    <%= link_to group.name, group_path(group.id) %>
+  </div>
+<% end %>

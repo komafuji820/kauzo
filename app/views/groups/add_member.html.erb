@@ -1,0 +1,12 @@
+メンバーリスト
+
+<% @members.each do |member| %>
+  <div>
+  <%= "#{member.nickname} : #{member.email}" %>
+  </div>
+<% end %>
+
+<ul>
+  <li><%= link_to '他のメンバーを追加する', search_users_path %></li>
+  <li><%= link_to 'このメンバーとグループを作成', new_group_path %></li>
+</ul>

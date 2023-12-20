@@ -1,0 +1,24 @@
+<%= form_with model: @user, url: add_member_groups_path, method: :get, local: true do |f| %>
+
+  <div>
+  <% if @users.present? %>
+  <div>
+    ユーザーを選択してください
+  </div>
+    <% @users.each do |user| %>
+      <%= check_box_tag "group[user_ids][]", user.id %>
+      <%= label_tag "group[user_ids][]", user.nickname %>
+      <%= label_tag "group[user_ids][]", user.email %>
+    <% end %>
+    <div class="actions">
+    <%= f.submit "メンバーリストを確認", class:"add-member-btn" %>
+    </div>
+  <% else %>
+    該当するユーザーはいませんでした
+    <div>
+    <%= link_to '戻る', search_users_path %>
+    </div>
+  <% end %>
+  </div>
+
+<% end %>

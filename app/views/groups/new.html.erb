@@ -3,9 +3,10 @@
 <%= form_with model: @group, local: true do |f| %>
   
   <div>
+  <%# メンバーリストに追加されたユーザーがいる場合のみ実行 %>
   <% if @members.present? %>
     <div>
-      メンバーを選択してください
+      チェックを入れるとメンバーが確定します。
     </div>
     <% @members.each do |member| %>  
       <div>
@@ -18,7 +19,7 @@
   </div>
 
   <div class="field">
-  <%= f.label 'グループ名を入力' %><br />
+  <%= f.label 'グループ名を入力してください' %><br />
   <%= f.text_field :name, autocomplete: "name", placeholder: 'グループ名', class:"new-group-form" %>
   <input name="group[user_ids][]" value=<%= current_user.id %> type="hidden">
   </div>

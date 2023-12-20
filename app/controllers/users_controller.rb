@@ -5,11 +5,18 @@ class UsersController < ApplicationController
   end
 
   def add_member
-    @users = Group.new(add_member_params)
-    session["add_member_data"] = {users: @users.attributes}
-    session["add_member_data"][:users]["id"] = params[:group][:user_ids]
-    user_ids = session["add_member_data"][:users]["id"]
-    @members = User.find(user_ids)
+    # 
+      @users = Group.new(add_member_params)
+      if session["add_member_data"]["users"]["id"] == nil
+        session["add_member_data"] = {users: @users.attributes}
+        session["add_member_data"][:users]["id"] = params[:group][:user_ids]
+        user_ids = session["add_member_data"][:users]["id"]
+        @members = User.find(user_ids)
+      else
+        session["add_member_data"]["users"]["id"] << params[:group][:user_ids]
+        user_ids = session["add_member_data"]["users"]["id"]
+        @members = User.find(user_ids)
+      end 
   end
 
   private

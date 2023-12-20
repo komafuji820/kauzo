@@ -6,7 +6,7 @@
   <% if @members.present? %>
     <% @members.each do |member| %>
       <div>
-        追加するメンバーにチェックをしてください
+        追加するメンバーにチェックしてください
       </div>
       <div>
       <%= check_box_tag "group[user_ids][]", member.id %>

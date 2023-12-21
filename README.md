@@ -12,7 +12,6 @@
 
 - has_many :group_users
 - has_many :groups, through: :group_users
-- has_many :item_memos
 - has_many :order_memos
 
 ## groups テーブル
@@ -45,43 +44,39 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | image       |            |                                |
-| content     | text       |                                |
-| priority_id | integer    | null: false                    |
+| memo        | string     |                                |
 | group       | references | null: false, foreign_key: true |
+| category    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :group
-- belongs_to :category
-- has_many :item_memos
+- belongs_to :categories
 
 ## orders テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | image       |            |                                |
-| content     | text       |                                |
+| memo        | string     |                                |
 | priority_id | integer    | null: false                    |
 | group       | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :group
-- belongs_to :category
+- belongs_to :priority
 - has_many :order_memos
 
-## item_memos テーブル
+## categories テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| content     | text       |                                |
-| user        | references | null: false, foreign_key: true |
-| item        | references | null: false, foreign_key: true |
+| name        | string     | null: false                    |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- has_many :items
 
 ## order_memos テーブル
 

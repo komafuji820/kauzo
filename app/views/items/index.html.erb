@@ -3,8 +3,11 @@
 
 <% @items.each do |item| %>
   <div>
-  <%= item.memo %>
-  <%= item.priority.name %>
-  <%= image_tag item.image.variant(resize: '100x100'), class: 'item-images' if item.image.attached? %>
+  <% if item.image.attached? %>
+    <%= image_tag item.image.variant(resize: '200x150'), class: 'item-images' %>
+  <% else %>
+    <%= image_tag 'noimage.jpg', :size => '200x150' %>
+  <% end %>
+  memo : <%= item.memo %>
   </div>
 <% end %>

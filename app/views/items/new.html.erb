@@ -3,7 +3,7 @@
 <%= form_with model: @item, url: group_items_path, local: true do |f| %>
   <div class="priority-box">
     <%= f.text_field :memo, class:"memo", placeholder:"賞味期限などをメモできます" %>
-    <%= f.collection_select(:priority_id, Priority.all, :id, :name, {}, {class:"priority-select"}) %>
+    <%= f.file_field :image %>
     <%= f.submit "在庫リストに追加する" ,class:"add-items-btn" %>
   </div>
 <% end %>

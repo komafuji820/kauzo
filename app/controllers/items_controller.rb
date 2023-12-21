@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    group = Group.find(params[:group_id])
+    @items = group.items
   end
 
   def new

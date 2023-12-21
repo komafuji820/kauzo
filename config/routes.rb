@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   resources :groups do
     collection do
-      # メンバー追加用
+      # メンバーをリストに追加する
       get 'add_members_to_list'
     end
   end

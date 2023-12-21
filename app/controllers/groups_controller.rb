@@ -11,23 +11,24 @@ class GroupsController < ApplicationController
     
     # session情報がない場合
     if session["members_list"] == nil
-      session["members_list"] = {users: @users.attributes} # @usersをハッシュ型にしてsessionに格納
-      session["members_list"][:users]["ids"] = params[:group][:user_ids] # メンバーリストに追加したユーザーのIDをsessionに格納
+      session["members_list"] = {users: @users.attributes}
+      session["members_list"][:users]["ids"] = params[:group][:user_ids]
       user_ids = session["members_list"][:users]["ids"]
 
     # session情報が存在する場合
     else
-      session["members_list"]["users"]["ids"] << params[:group][:user_ids] # 新しくメンバーリストに追加したユーザーのIDを既存のsessionに追加
+      session["members_list"]["users"]["ids"] << params[:group][:user_ids]
       user_ids = session["members_list"]["users"]["ids"]
     end
-    @members = User.find(user_ids) # session情報からユーザーを検索
+
+    # session情報からユーザーを検索
+    @members = User.find(user_ids)
   end
 
   def new
-    # sessionに格納された情報をもとに、ユーザーを検索
+    # session情報からユーザーを検索
     user_ids = session["members_list"]["users"]["ids"]
     @members = User.find(user_ids)
-    # 空のインスタンスを生成
     @group = Group.new
   end
 
@@ -35,7 +36,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       flash[:group_create] = "#{@group.name}を作成しました！"
-      session["members_list"] = nil # session情報を削除
+      # session情報を削除
+      session["members_list"] = nil
       redirect_to root_path
     else
       flash.now[:group_name_error] = "グループ名を入力してください。"
@@ -68,11 +70,13 @@ class GroupsController < ApplicationController
 
   private
 
-  def add_members_to_list_params # メンバーリストに追加する時のストロングパラメータ
+  # メンバーリストに追加する時のストロングパラメータ
+  def add_members_to_list_params
     params.require(:group).permit(user_ids:[])
   end
 
-  def group_params # グループ作成時のストロングパラメータ
+  # グループ作成時のストロングパラメータ
+  def group_params 
     params.require(:group).permit(:name, user_ids:[])
   end
 

@@ -46,7 +46,7 @@
 | ----------- | ---------- | ------------------------------ |
 | image       |            |                                |
 | content     | text       |                                |
-| category_id | integer    | null: false                    |
+| priority_id | integer    | null: false                    |
 | group       | references | null: false, foreign_key: true |
 
 ### Association
@@ -61,7 +61,7 @@
 | ----------- | ---------- | ------------------------------ |
 | image       |            |                                |
 | content     | text       |                                |
-| category_id | integer    | null: false                    |
+| priority_id | integer    | null: false                    |
 | group       | references | null: false, foreign_key: true |
 
 ### Association

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       # メンバーをリストに追加する
       get 'add_members_to_list'
     end
+    resources :items, only: [:index, :new, :create]
   end
   
   resources :users do
@@ -18,5 +19,7 @@ Rails.application.routes.draw do
       get 'search_result'
     end
   end
+
+  
   
 end

@@ -1,0 +1,7 @@
+<%= flash[:items_create] %>
+在庫リスト
+<% @items.each do |item| %>
+  <div>
+  <%= item.memo %>
+  </div>
+<% end %>

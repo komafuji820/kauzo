@@ -27,8 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_21_072904) do
   end
 
   create_table "items", charset: "utf8", force: :cascade do |t|
-    t.text "content"
-    t.integer "category_id", null: false
+    t.text "memo"
+    t.integer "priority_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

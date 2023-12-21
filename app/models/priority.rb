@@ -1,9 +1,9 @@
 class Priority < ActiveHash::Base
   self.data = [
     { id: 1, name: '至急！' },
-    { id: 2, name: '数日以内に買う' },
-    { id: 3, name: '他の買い物のついでに' },
-    { id: 4, name: 'そのうち買えればOK' },
+    { id: 2, name: '数日以内' },
+    { id: 3, name: '何かのついでに' },
+    { id: 4, name: 'そのうち' },
     { id: 5, name: 'その他' }
   ]
 

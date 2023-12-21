@@ -22,6 +22,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:memo, :priority_id).merge(group_id: params[:group_id])
+    params.require(:item).permit(:image, :memo, :priority_id).merge(group_id: params[:group_id])
   end
 end

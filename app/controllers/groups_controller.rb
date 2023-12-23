@@ -55,10 +55,6 @@ class GroupsController < ApplicationController
   end
 
   def update
-    # group = Group.find(params[:id])
-    # group.update(group_params)
-    # redirect_to root_path
-    # flash[:group_update] = "#{group.name}グループ情報を更新しました"
   end
 
   def destroy

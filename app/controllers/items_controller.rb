@@ -2,27 +2,25 @@ class ItemsController < ApplicationController
 
   def index
     group = Group.find(params[:group_id])
-    @items = group.items
+    @items = group.items.order("created_at DESC")
   end
 
   def new
-    @item_category = ItemCategory.new
+    @item = Item.new
   end
 
   def create
-    @item_category = ItemCategory.new(item_params)
-    if @item_category.valid?
-      @item_category.save
+    @item = Item.new(item_params)
+    if @item.save
       flash[:items_create] = "在庫リストを作成しました！"
       redirect_to group_items_path(params[:group_id])
     else
+      flash.now[:items_create_error] = "メモを入力するか、画像を添付してください!"
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    # @item_category = ItemCategory.find(params[:id])
-    @item = Item.find(params[:id])
   end
 
   def upadate
@@ -31,7 +29,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item_category).permit(:name, :memo, :image).merge(group_id: params[:group_id])
+    params.require(:item).permit(:memo, :image, :category_id).merge(group_id: params[:group_id])
   end
 
 end

@@ -4,7 +4,13 @@
 <% @items.each do |item| %>
   <div>
   カテゴリ：<%= item.category.name %>
-  メモ : <%= item.memo %>
+  </div>
+  <div>
+    <% if item.memo == "" %>
+      メモ : なし
+    <% else %>
+      <%= item.memo %>
+    <% end %>
   </div>
   <div>
   <% if item.image.attached? %>
@@ -13,5 +19,4 @@
     <%= image_tag 'noimage.jpg', :size => '300x200' %>
   <% end %>
   </div>
-  <%= link_to '編集', edit_group_item_path(id: item.id) %>
 <% end %>

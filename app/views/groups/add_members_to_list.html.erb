@@ -1,12 +1,19 @@
-メンバーリスト
+<div class="main__wrapper">
+  <div class="main__section">
+    
+    <div class="add-member__section">
+      <p class="add-member__title">メンバーリスト</p>
+      <% @members.each do |member| %>
+        <ul class="add-member__name">
+          <li><%= "#{member.nickname} : #{member.email}" %></li>
+        </ul>
+      <% end %>
+      <ul class="actions">
+        <li><%= link_to 'このメンバーとグループを作成', new_group_path, class:"add-member-link" %></li>
+        <li><%= link_to '他のユーザーも検索する', search_users_path, class:"return-link" %></li>
+      </ul>
+    </div>
 
-<% @members.each do |member| %>
-  <div>
-  <%= "#{member.nickname} : #{member.email}" %>
   </div>
-<% end %>
-
-<ul>
-  <li><%= link_to 'このメンバーとグループを作成', new_group_path %></li>
-  <li><%= link_to '他のユーザーも検索する', search_users_path %></li>
-</ul>
+  <%= render partial: 'list' %>
+</div>

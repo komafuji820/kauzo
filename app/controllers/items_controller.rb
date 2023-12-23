@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :find_item, only: [:edit, :update]
 
   def index
     group = Group.find(params[:group_id])
@@ -12,20 +13,16 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flash[:items_create] = "在庫リストを作成しました！"
       redirect_to group_items_path(params[:group_id])
     else
-      flash.now[:items_create_error] = "メモを入力するか、画像を添付してください!"
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to group_items_path(params[:group_id])
     else
@@ -43,6 +40,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:memo, :image, :category_id).merge(group_id: params[:group_id])
+  end
+
+  def find_item
+    @item = Item.find(params[:id])
   end
 
 end

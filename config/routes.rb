@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       # ユーザー検索フォーム表示ページ
       get 'search'
       # ユーザー検索結果表示ページ
-      get 'search_result'
+      get 'search_results'
     end
   end
 

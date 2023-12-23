@@ -1,9 +1,13 @@
-<%= flash[:group_create] %>
-<%= flash[:group_update] %>
-<%= flash[:group_delete] %>
+<div class="main__wrapper">
+  <div class="main__section">
 
-<% current_user.groups.each do |group| %>
-  <div>
-    <%= link_to group.name, group_path(group.id) %>
+    <div class="group__message">
+      <p>ようこそ、<%= current_user.nickname %>さん！</p>
+      <p>家族や友達と買い物リストを共有しよう！</p>
+    </div>
+    
   </div>
-<% end %>
+  <%= render partial: 'list' %>
+</div>
+
+

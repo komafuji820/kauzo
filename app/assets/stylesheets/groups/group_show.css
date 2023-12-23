@@ -1,0 +1,13 @@
+.group-wrapper{
+  display: flex;
+  height: calc(100vh - 40px - 18px);
+}
+
+.group-lists-section{
+  width: 150px;
+  background-color: papayawhip;
+}
+
+.group-show-seciton{
+  width: calc(100vw - 150px);
+}

@@ -1,32 +1,39 @@
-グループ詳細画面
-<div>
-  グループ名：<%= @group.name %>
-</div>
-<div>
-  参加しているユーザー：
-  <% @users.each do |user| %>
-    <%= user.nickname %>
-  <% end %>
-</div>
-<div>
-  作成済みのお買い物リスト：
-<div>
-<div>
-  <%= link_to '在庫を見る', group_items_path(@group.id) %> 
-</div>
+<div class="group-wrapper">
+  <div class="group-lists-section">
+    <div class="group-lists">
+      <%= flash[:group_create] %>
+      <%= flash[:group_update] %>
+      <%= flash[:group_delete] %>
 
-<div>
-  <%= link_to 'グループを編集する', edit_group_path(@group.id) %> 
-</div>
+      <% current_user.groups.each do |group| %>
+        <div>
+          <%= link_to group.name, group_path(group.id) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<div>
-  <%= link_to '新しいお買い物リストを作成' %>
-</div>
-
-<div>
-  <%= link_to '在庫リストを作成する', new_group_item_path(@group.id) %>
-</div>
-
-<div>
-  <%= link_to 'グループを削除する', group_path(@group.id), data: { turbo_method: :delete } %>
+  <div class="group-show-seciton">
+    <div class="group-show">
+      グループ名：<%= @group.name %>
+    </div>
+    <div>
+      参加しているユーザー：
+      <% @users.each do |user| %>
+        <%= user.nickname %>
+      <% end %>
+    </div>
+    <div>
+      作成済みのお買い物リスト：
+      <%= link_to '新しいお買い物リストを作成' %>
+    </div>
+    <div>
+      <%= link_to '在庫リストに追加', new_group_item_path(@group.id) %>
+      <%= link_to '在庫を確認', group_items_path(@group.id) %>
+    </div>
+    <div>
+      <%= link_to 'グループを編集', edit_group_path(@group.id) %>
+      <%= link_to 'グループを削除', group_path(@group.id), data: { turbo_method: :delete } %>
+    </div>
+  </div>
 </div>

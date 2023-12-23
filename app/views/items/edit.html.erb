@@ -1,0 +1,15 @@
+在庫リストを編集する
+
+<div class="priority-box">
+<%= form_with model: @item, url: group_items_path, local: true do |f| %>
+  <div>
+  <%= f.label 'オリジナルのカテゴリーを設定できます'%>
+  </div>
+  <%= f.text_field :name, class:"category" %>
+  <%= f.text_field :memo, class:"memo" %>
+  <%= f.file_field :image %>
+  <div>
+  <%= f.submit "在庫リストに追加する" ,class:"add-items-btn" %>
+  </div>
+<% end %>
+</div>

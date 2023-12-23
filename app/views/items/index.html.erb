@@ -3,11 +3,15 @@
 
 <% @items.each do |item| %>
   <div>
-  <% if item.image.attached? %>
-    <%= image_tag item.image.variant(resize: '200x150'), class: 'item-images' %>
-  <% else %>
-    <%= image_tag 'noimage.jpg', :size => '200x150' %>
-  <% end %>
-  memo : <%= item.memo %>
+  カテゴリ：<%= item.category.name %>
+  メモ : <%= item.memo %>
   </div>
+  <div>
+  <% if item.image.attached? %>
+    <%= image_tag item.image.variant(resize: '300x200'), class: 'item-images' %>
+  <% else %>
+    <%= image_tag 'noimage.jpg', :size => '300x200' %>
+  <% end %>
+  </div>
+  <%= link_to '編集', edit_group_item_path(id: item.id) %>
 <% end %>

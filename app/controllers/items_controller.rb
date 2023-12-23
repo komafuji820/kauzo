@@ -6,22 +6,32 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item_category = ItemCategory.new
   end
 
   def create
-    @items = Item.new(item_params)
-    if @items.save
+    @item_category = ItemCategory.new(item_params)
+    if @item_category.valid?
+      @item_category.save
       flash[:items_create] = "在庫リストを作成しました！"
-      redirect_to group_items_path(@items.group_id)
-    # else
-      # render :new, status: :unprocessable_entity
+      redirect_to group_items_path(params[:group_id])
+    else
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    # @item_category = ItemCategory.find(params[:id])
+    @item = Item.find(params[:id])
+  end
+
+  def upadate
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:image, :memo, :priority_id).merge(group_id: params[:group_id])
+    params.require(:item_category).permit(:name, :memo, :image).merge(group_id: params[:group_id])
   end
+
 end

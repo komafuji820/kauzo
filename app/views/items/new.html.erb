@@ -1,9 +1,15 @@
 在庫リストを作成する
 
-<%= form_with model: @item, url: group_items_path, local: true do |f| %>
-  <div class="priority-box">
-    <%= f.text_field :memo, class:"memo", placeholder:"賞味期限などをメモできます" %>
-    <%= f.file_field :image %>
-    <%= f.submit "在庫リストに追加する" ,class:"add-items-btn" %>
+<div class="priority-box">
+<%= form_with model: @item_category, url: group_items_path, local: true do |f| %>
+  <div>
+  <%= f.label 'オリジナルのカテゴリーを設定できます'%>
+  </div>
+  <%= f.text_field :name, class:"category", placeholder:"（例）食品・洗剤" %>
+  <%= f.text_field :memo, class:"memo", placeholder:"メモ" %>
+  <%= f.file_field :image %>
+  <div>
+  <%= f.submit "在庫リストに追加する" ,class:"add-items-btn" %>
   </div>
 <% end %>
+</div>
